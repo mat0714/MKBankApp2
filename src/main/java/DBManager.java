@@ -52,6 +52,7 @@ public class DBManager {
         }
         transaction.commit();
     }
+
     public void deposit(int customerId, double depositAmount, int accountNumber) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -117,5 +118,10 @@ public class DBManager {
                 .setParameter("newInterestRate", newInterestRate)
                 .executeUpdate();
         transaction.commit();
+    }
+
+    public void closeEntityManager() {
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }
